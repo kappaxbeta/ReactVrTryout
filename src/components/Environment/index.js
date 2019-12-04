@@ -1,7 +1,6 @@
 import React from 'react';
 import {Entity} from "aframe-react";
-
-
+// For a more complex project, a config file would be a better place
 const colors = {
     planetOne: "#F0496F",
     planetTwo: "#53CE37",
@@ -13,10 +12,12 @@ const colors = {
     sky: "#000",
 };
 
+// Same for this functions. Collect them in one place
 const animation = function (to, dur) {
     return `property: position; to: ${to}; dur: ${dur}; loop: true; dir:alternate;`;
 };
 
+// Aware that some browser require a user input before playing sound
 const sound = "src: url(/assets/4am.mp3); autoplay: true; volume:0.5";
 
 function Environment() {
@@ -28,14 +29,15 @@ function Environment() {
 
             {/** Sky **/}
             <Entity primitive="a-sky" color={colors.sky}></Entity>
-            <Entity  star-system="count: 1000; radius: 250; depth: 0"></Entity>
+            <Entity star-system="count: 1000; radius: 250; depth: 0"></Entity>
 
             {/** Ground and Background with sound **/}
             {/** Choose to use HTML instant of React Wrapper, because its easier for the primitives**/}
             <a-plane color={colors.ground} height="4" width="4" position="0 0 -2" rotation="-90 0 0" shadow sound={sound}></a-plane>
             <a-plane color={colors.bg} height="2" width="4" position="0 1 -4" rotation="0 0 0" shadow ></a-plane>
 
-            {/** Deko **/}
+            {/** Deco **/}
+            {/* could also stored in a array with objects which contains the values and then iterate them with map*/}
             <a-sphere color={colors.planetOne} position="-3 6 -4" animation={animation(" -3 5 -4", 1500)}/>
             <a-sphere color={colors.planetTwo} position="-1 5 -6"  animation={animation(" -2 5 -8", 2000)} />
             <a-sphere color={colors.planetThree}  position="3 3 -4" animation={animation(" -3 3 -4", 2300)}/>

@@ -7,6 +7,9 @@ import Model from "./components/Model";
 import Camera from "./components/Camera";
 import Environment from "./components/Environment";
 
+// Demo
+// https://testing-task-4mtdc1u8h.now.sh/
+
 function App() {
   return (
     <div className="App">
